@@ -1,16 +1,15 @@
-# Easemind - Mental Health Support Platform
+Easemind - A Mental Health Support Platform
+Easemind is a one-stop mental health support platform, offering users resources, counseling services, and interactive aids to help them with their mental wellness journey.
 
-Easemind is a comprehensive mental health support platform that provides users with resources, counseling services, and interactive tools to support their mental well-being journey.
+Overview
+Easemind offers holistic, comprehensive support for mental health:
 
-## Overview
-
-Easemind offers a holistic approach to mental health support through:
-- Professional counseling services
-- Community support forums
-- Educational resources
-- Interactive challenges
-- Mood tracking
-- Progress monitoring
+Professional counseling services
+Community forums for support
+Educational resources 
+Interactive challenges
+Mood tracking 
+Progress tracking 
 
 ## Workflow
 
@@ -84,29 +83,28 @@ mindmap
 - Autoprefixer
 
 ## Novel Features
+1. Intelligent Mood Tracking
+- Visual Mood Tracking Interface
+- Visualisation of Historical Mood Data
+- Mood Trend Recognition
 
-1. **Intelligent Mood Tracking**
-   - Visual mood tracking interface
-   - Historical mood data visualization
-   - Pattern recognition for mood trends
+2. Gamified Challenges
+- Progressively Challenging Levels
+- Reward System
+- Achievement Badges
+- Task-Based Progress Tracking
 
-2. **Gamified Challenges**
-   - Progressive difficulty levels
-   - Reward system
-   - Achievement badges
-   - Task-based progress tracking
+3. Resource Personalisation
+- Content Filtering, Based on the Levels of Difficulty
+- Progress Tracking
+- Multimedia Content Support
 
-3. **Resource Personalization**
-   - Difficulty-based content filtering
-   - Progress tracking
-   - Multimedia content support
+4. Community Integration
+- Moderated Forums
+- Anonymous Posting Option
+- Peer Support System
 
-4. **Community Integration**
-   - Moderated forums
-   - Anonymous posting option
-   - Peer support system
-
-## Solution Architecture
+## Solution Architecture 
 
 The platform is built with a modular architecture focusing on:
 
