@@ -11,7 +11,14 @@ Interactive challenges
 Mood tracking 
 Progress tracking 
 
+
+# Website hosted link
+https://easemind-ai.vercel.app/
+
 ## Workflow
+
+**Overall Workflow**
+![EaseMind_page-0001](https://github.com/user-attachments/assets/ae8049a1-63e8-4d84-841c-01a6f7d74590)
 
 1. **User Journey**
    ```mermaid
@@ -62,6 +69,20 @@ mindmap
       Rewards
       Badges
 ```
+## Output Snapshot
+
+![image](https://github.com/user-attachments/assets/dd1f763c-6d2c-450a-9d54-bc7e06d7ecbb)
+![image](https://github.com/user-attachments/assets/b360c39e-a880-409b-9efd-25b45b539c6b)
+![image](https://github.com/user-attachments/assets/d37bcfc8-dc4c-48d9-a3b1-f85c3b58a8df)
+![image](https://github.com/user-attachments/assets/fcd97347-a5d0-413a-adba-2009c75e8092)
+![image](https://github.com/user-attachments/assets/aa5b03a0-25c4-4258-b930-37bbca436f19)
+![image](https://github.com/user-attachments/assets/bd1f9469-75ef-4bd8-87be-57f2fdd91fdd)
+
+## Workflow Snapshot
+![image](https://github.com/user-attachments/assets/42496ef9-092e-4bc8-b795-0ea6e2776689)
+![image](https://github.com/user-attachments/assets/6db52d56-7b7c-4bdc-87d1-eda689d0a81a)
+![image](https://github.com/user-attachments/assets/815b7dd5-c3a3-49b8-bb68-7768d0ee236f)
+
 
 ## Tech Stack
 
