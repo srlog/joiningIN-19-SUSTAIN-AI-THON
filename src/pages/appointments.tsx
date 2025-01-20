@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
@@ -7,52 +7,57 @@ import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-
-interface Counselor {
-  id: string;
-  name: string;
-  specialization: string;
-  avatar: string;
-  availability: { time: string; slots: number }[];
-}
+import { useNavigate } from 'react-router-dom';
+import { counselorApi, appointmentApi } from '@/lib/api';
+import type { Counselor, Appointment } from '@/lib/types';
 
 export function Appointments() {
+  const navigate = useNavigate();
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [selectedTime, setSelectedTime] = useState<string>('');
-  const [counselors] = useState<Counselor[]>([
-    {
-      id: '1',
-      name: 'Dr. Sarah Johnson',
-      specialization: 'Anxiety & Depression',
-      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330',
-      availability: [
-        { time: '9:00 AM', slots: 2 },
-        { time: '10:00 AM', slots: 1 },
-        { time: '2:00 PM', slots: 3 },
-        { time: '4:00 PM', slots: 2 }
-      ],
-    },
-    {
-      id: '2',
-      name: 'Dr. Michael Chen',
-      specialization: 'Stress Management',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e',
-      availability: [
-        { time: '9:30 AM', slots: 1 },
-        { time: '11:00 AM', slots: 2 },
-        { time: '1:00 PM', slots: 2 },
-        { time: '3:00 PM', slots: 1 }
-      ],
-    },
-  ]);
+  const [counselors, setCounselors] = useState<Counselor[]>([]);
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
 
-  const handleBooking = (counselorId: string, time: string) => {
-    console.log('Booking appointment:', { counselorId, date, time });
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [counselorsData, appointmentsData] = await Promise.all([
+          counselorApi.getCounselors(),
+          appointmentApi.getAppointments(),
+        ]);
+        setCounselors(counselorsData);
+        setAppointments(appointmentsData);
+      } catch (error) {
+        console.error('Failed to load data:', error);
+      }
+    };
+    loadData();
+  }, []);
+
+  const handleBooking = async (counselorId: string, time: string) => {
+    try {
+      const appointment = await appointmentApi.bookAppointment({
+        counselorId,
+        date: new Date(time),
+        type: 'video',
+      });
+      navigate('/chat');
+    } catch (error) {
+      console.error('Failed to book appointment:', error);
+    }
   };
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Book an Appointment</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold">Book an Appointment</h1>
+        <Button 
+          onClick={() => navigate('/chat')}
+          className="button-gradient hover:opacity-90"
+        >
+          Schedule Appointment
+        </Button>
+      </div>
       
       <div className="grid md:grid-cols-2 gap-6">
         <Card>
@@ -76,21 +81,21 @@ export function Appointments() {
             <Card key={counselor.id}>
               <CardContent className="flex items-center space-x-4 p-4">
                 <Avatar className="h-12 w-12">
-                  <AvatarImage src={counselor.avatar} alt={counselor.name} />
-                  <AvatarFallback>{counselor.name[0]}</AvatarFallback>
+                  <AvatarImage src={`https://i.pravatar.cc/150?u=${counselor.id}`} alt={counselor.bio.split(' ')[0]} />
+                  <AvatarFallback>{counselor.bio[0]}</AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
-                  <h3 className="font-semibold">{counselor.name}</h3>
-                  <p className="text-sm text-muted-foreground">{counselor.specialization}</p>
+                  <h3 className="font-semibold">{counselor.bio.split(' ')[0]}</h3>
+                  <p className="text-sm text-muted-foreground">{counselor.specializations.join(', ')}</p>
                   <div className="flex flex-wrap gap-2 mt-2">
-                    {counselor.availability.map(({ time, slots }) => (
-                      <Dialog key={time}>
+                    {counselor.availability.map((slot) => (
+                      <Dialog key={slot.id}>
                         <DialogTrigger asChild>
                           <Badge 
                             variant="outline" 
                             className="cursor-pointer hover:bg-primary hover:text-primary-foreground"
                           >
-                            {time} ({slots} slots)
+                            {slot.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                           </Badge>
                         </DialogTrigger>
                         <DialogContent>
@@ -100,7 +105,7 @@ export function Appointments() {
                           <div className="space-y-4 py-4">
                             <div className="space-y-2">
                               <Label>Counselor</Label>
-                              <p>{counselor.name}</p>
+                              <p>{counselor.bio.split(' ')[0]}</p>
                             </div>
                             <div className="space-y-2">
                               <Label>Date</Label>
@@ -108,7 +113,7 @@ export function Appointments() {
                             </div>
                             <div className="space-y-2">
                               <Label>Time</Label>
-                              <p>{time}</p>
+                              <p>{slot.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
                             </div>
                             <div className="space-y-2">
                               <Label>Session Type</Label>
@@ -125,7 +130,7 @@ export function Appointments() {
                             </div>
                             <Button 
                               className="w-full" 
-                              onClick={() => handleBooking(counselor.id, time)}
+                              onClick={() => handleBooking(counselor.id, slot.startTime.toISOString())}
                             >
                               Confirm Booking
                             </Button>

@@ -142,7 +142,6 @@
 .nav-item {
   position: relative;
   overflow: hidden;
-  color: black;
 }
 
 .nav-item::after {
@@ -174,4 +173,28 @@
     #C1DAD6
   );
   color: black;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .text-5xl {
+    font-size: 2.5rem;
+  }
+
+  .space-x-4 > * + * {
+    margin-left: 0.5rem;
+  }
+
+  .space-x-6 > * + * {
+    margin-left: 0.75rem;
+  }
 }

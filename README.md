@@ -1,10 +1,10 @@
-# MindfulPath - Mental Health Support Platform
+# Easemind - Mental Health Support Platform
 
-MindfulPath is a comprehensive mental health support platform that provides users with resources, counseling services, and interactive tools to support their mental well-being journey.
+Easemind is a comprehensive mental health support platform that provides users with resources, counseling services, and interactive tools to support their mental well-being journey.
 
 ## Overview
 
-MindfulPath offers a holistic approach to mental health support through:
+Easemind offers a holistic approach to mental health support through:
 - Professional counseling services
 - Community support forums
 - Educational resources
@@ -41,7 +41,7 @@ MindfulPath offers a holistic approach to mental health support through:
 
 ```mermaid
 mindmap
-  root((MindfulPath))
+  root((Easemind))
     User Support
       Counseling
         Video Sessions
@@ -154,8 +154,8 @@ The platform is built with a modular architecture focusing on:
 
 2. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/mindfulpath.git
-   cd mindfulpath
+   git clone https://github.com/your-username/Easemind.git
+   cd ease-mind
    ```
 
 3. **Install Dependencies**
