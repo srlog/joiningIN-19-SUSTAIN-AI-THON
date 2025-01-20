@@ -5,7 +5,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Trophy, Target, CheckCircle, Clock, Award, Calendar } from 'lucide-react';
+import { Trophy, CheckCircle, Clock, Award, Calendar } from 'lucide-react';
+// import {Target} from 'lucide-react';
 import { challengeApi } from '@/lib/api';
 import type { Challenge } from '@/lib/types';
 
@@ -34,6 +35,7 @@ export function Challenges() {
     try {
       // const challenge = await challengeApi.startChallenge(challengeId); // please use this
       // Refresh challenges after starting
+      console.log('Challenge started:', challengeId); // remove this
       const [upcoming, ongoing] = await Promise.all([
         challengeApi.getChallengesByCategory('upcoming'),
         challengeApi.getChallengesByCategory('ongoing'),
