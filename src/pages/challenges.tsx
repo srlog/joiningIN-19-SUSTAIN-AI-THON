@@ -12,7 +12,7 @@ import type { Challenge } from '@/lib/types';
 export function Challenges() {
   const [upcomingChallenges, setUpcomingChallenges] = useState<Challenge[]>([]);
   const [ongoingChallenges, setOngoingChallenges] = useState<Challenge[]>([]);
-  const [selectedChallenge, setSelectedChallenge] = useState<Challenge | null>(null);
+  // const [selectedChallenge, setSelectedChallenge] = useState<Challenge | null>(null); please use this
 
   useEffect(() => {
     const loadChallenges = async () => {
@@ -32,7 +32,7 @@ export function Challenges() {
 
   const handleStartChallenge = async (challengeId: string) => {
     try {
-      const challenge = await challengeApi.startChallenge(challengeId);
+      // const challenge = await challengeApi.startChallenge(challengeId); // please use this
       // Refresh challenges after starting
       const [upcoming, ongoing] = await Promise.all([
         challengeApi.getChallengesByCategory('upcoming'),

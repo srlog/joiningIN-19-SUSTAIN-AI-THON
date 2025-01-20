@@ -219,6 +219,7 @@ export const challengeApi = {
 // Rest of the existing APIs...
 export const authApi = {
   login: async (username: string, password: string): Promise<{ token: string }> => {
+    console.log(`username: ${username}, password: ${password}`);
     // Implement login logic
     return { token: 'mockToken' };
   },

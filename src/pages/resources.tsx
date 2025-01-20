@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
-import { BookOpen, Video, Brain, Play, CheckCircle, Clock, GraduationCap } from 'lucide-react';
+// import { Progress } from '@/components/ui/progress';
+import { BookOpen, Video, Brain, Play, Clock, GraduationCap } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import { resourceApi } from '@/lib/api';
 import type { Resource } from '@/lib/types';
 

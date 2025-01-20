@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
+import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
+// import { NavigationMenuLink } from "@/components/ui/navigation-menu";
 import { Home, User, MessageCircle, Calendar, BookOpen, Trophy, LineChart, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
