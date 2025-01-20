@@ -99,6 +99,8 @@ export interface Challenge {
   duration: number; // in days
   difficulty: 'easy' | 'medium' | 'hard';
   category: string;
+  startDate: Date;
+  endDate: Date;
   tasks: ChallengeTask[];
   rewards: {
     points: number;

@@ -14,7 +14,7 @@ import type { Counselor, Appointment } from '@/lib/types';
 export function Appointments() {
   const navigate = useNavigate();
   const [date, setDate] = useState<Date | undefined>(new Date());
-  const [selectedTime, setSelectedTime] = useState<string>('');
+  // const [selectedTime, setSelectedTime] = useState<string>('');  Use thisss.. venkat
   const [counselors, setCounselors] = useState<Counselor[]>([]);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
 
@@ -27,6 +27,7 @@ export function Appointments() {
         ]);
         setCounselors(counselorsData);
         setAppointments(appointmentsData);
+        console.log(appointments)
       } catch (error) {
         console.error('Failed to load data:', error);
       }
@@ -41,6 +42,7 @@ export function Appointments() {
         date: new Date(time),
         type: 'video',
       });
+      console.log('Booked appointment:', appointment);
       navigate('/chat');
     } catch (error) {
       console.error('Failed to book appointment:', error);

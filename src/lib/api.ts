@@ -1,7 +1,8 @@
-import type { User, MoodEntry, ForumPost, ForumReply, Appointment, Counselor, Challenge, Resource } from './types';
+import type { Challenge,Counselor, Resource, Appointment } from './types';
+// import type { User, MoodEntry, ForumPost, ForumReply,  } from './types';
 
 // Mock data
-const mockCounselors: Counselor[] = [/* ... existing counselors ... */];
+// const mockCounselors: Counselor[] = [/* ... existing counselors ... */];
 
 // Mock resources data
 const mockResources: Resource[] = [
@@ -197,6 +198,7 @@ export const challengeApi = {
   },
 
   getUserProgress: async (userId: string): Promise<{ challengeId: string; progress: number }[]> => {
+    console.log('userId', userId);
     return mockChallenges
       .filter(c => c.category === 'ongoing')
       .map(challenge => ({
@@ -206,6 +208,7 @@ export const challengeApi = {
   },
 
   getRewards: async (userId: string): Promise<{ points: number; badges: string[] }> => {
+    console.log(userId);
     return {
       points: 275,
       badges: ['Mindfulness Master', 'Gratitude Guru'],
@@ -214,6 +217,88 @@ export const challengeApi = {
 };
 
 // Rest of the existing APIs...
-export const authApi = {/* ... */};
-export const counselorApi = {/* ... */};
-export const appointmentApi = {/* ... */};
+export const authApi = {
+  login: async (username: string, password: string): Promise<{ token: string }> => {
+    // Implement login logic
+    return { token: 'mockToken' };
+  },
+  logout: async (): Promise<void> => {
+    // Implement logout logic
+  },
+};
+
+export const counselorApi = {
+  getCounselors: async (): Promise<Counselor[]> => {
+    // Implement API call to fetch counselors
+    return [
+      {
+        id: '1',
+        userId: 'user1',
+        specializations: ['Therapy'],
+        education: ['Psychology PhD'],
+        experience: 10,
+        bio: 'Experienced counselor',
+        rating: 4.5,
+        availability: [],
+        languages: ['English'],
+        pricing: { hourlyRate: 100, currency: 'USD' },
+        // hourlyRate: 100,
+        // currency: 'USD',
+      },
+      // Add more counselors as needed
+    ];
+  },
+};
+
+export const appointmentApi = {
+  getAppointments: async (): Promise<Appointment[]> => {
+    // Implement API call to fetch appointments
+    return [
+      {
+        id: '1',
+        userId: 'user1',
+        counselorId: 'counselor1',
+        timeSlotId: 'slot1',
+        date: new Date(),
+        duration: 60,
+        type: 'video',
+        status: 'confirmed',
+        notes: 'Initial consultation',
+        rating: 5,
+        feedback: 'Very helpful session',
+        payment: {
+          amount: 100,
+          currency: 'USD',
+          status: 'completed',
+        },
+        // amount: 100,
+        // currency: 'USD',
+        // status: 'completed',
+      },
+      // Add more appointments as needed
+    ];
+  },
+  bookAppointment: async (data: {
+    counselorId: string;
+    date: Date;
+    type: 'video' | 'audio' | 'chat';
+  }): Promise<Appointment> => {
+    // Implement API call to book an appointment
+    return {
+      id: '1',
+      userId: 'user1',
+      counselorId: data.counselorId,
+      timeSlotId: 'slot1',
+      date: data.date,
+      duration: 60,
+      type: data.type,
+      status: 'pending',
+      payment: {
+        amount: 100,
+        currency: 'USD',
+        status: 'pending',
+      },
+    };
+  },
+};
+
