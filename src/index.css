@@ -2,24 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --border: 214.3 31.8% 91.4%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --border: 217.2 32.6% 17.5%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
 :root {
-  --background: 0 0% 98%;    /* F5FAFA */
-  --foreground: 0 0% 0%;
   --card: 0 0% 98%;
   --card-foreground: 0 0% 0%;
   --popover: 0 0% 98%;
   --popover-foreground: 0 0% 0%;
-  --primary: 203 57% 80%;    /* ACD1E9 */
-  --primary-foreground: 0 0% 0%;
   --secondary: 184 15% 82%;  /* C1DAD6 */
   --secondary-foreground: 0 0% 0%;
-  --muted: 196 17% 51%;     /* 6D929B */
-  --muted-foreground: 0 0% 0%;
   --accent: 34 31% 79%;     /* E8D0A9 */
   --accent-foreground: 0 0% 0%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 0%;
-  --border: 26 9% 68%;      /* B7AFA3 */
   --input: 26 9% 68%;
   --ring: 203 57% 80%;
   --chart-1: 203 57% 80%;   /* ACD1E9 */
@@ -27,28 +51,6 @@
   --chart-3: 34 31% 79%;    /* E8D0A9 */
   --chart-4: 26 9% 68%;     /* B7AFA3 */
   --chart-5: 196 17% 51%;   /* 6D929B */
-}
-
-.dark {
-  --background: 196 17% 15%;
-  --foreground: 0 0% 0%;
-  --card: 196 17% 15%;
-  --card-foreground: 0 0% 0%;
-  --popover: 196 17% 15%;
-  --popover-foreground: 0 0% 0%;
-  --primary: 203 57% 70%;
-  --primary-foreground: 0 0% 0%;
-  --secondary: 184 15% 72%;
-  --secondary-foreground: 0 0% 0%;
-  --muted: 196 17% 41%;
-  --muted-foreground: 0 0% 0%;
-  --accent: 34 31% 69%;
-  --accent-foreground: 0 0% 0%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 0%;
-  --border: 26 9% 58%;
-  --input: 26 9% 58%;
-  --ring: 203 57% 70%;
 }
 
 .video-background {
